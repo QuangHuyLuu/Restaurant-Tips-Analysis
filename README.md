@@ -43,3 +43,17 @@ We can see information about:
 ```python
 df.info()
 ```
+- **Rows:** 244
+- **Columns:** 8
+- **Memory usage:** 16.3 KB
+
+| #  | Column      | Non-Null Count | Dtype    |
+|----|-------------|----------------|----------|
+| 0  | id          | 244 non-null   | Int64    |
+| 1  | total_bill  | 244 non-null   | Float64  |
+| 2  | tip         | 244 non-null   | Float64  |
+| 3  | sex         | 244 non-null   | string   |
+| 4  | smoker      | 244 non-null   | string   |
+| 5  | day         | 244 non-null   | string   |
+| 6  | time        | 244 non-null   | string   |
+| 7  | size        | 244 non-null   | Int64    |

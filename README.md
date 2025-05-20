@@ -159,3 +159,45 @@ all_mct
 - Based on median: Smokers give more tips than Common and Non_smokers
   
 **General conclusion:** Smokers will give more tips than Common and Non_smokers
+
+### Look at histograms
+``` python
+plt.figure(figsize=(15, 5))
+
+plt.subplot(1, 3, 1)
+plt.hist(df['tip'], bins=10, color='#74b9ff')
+median_all = df['tip'].median()
+plt.axvline(median_all, color='black', linestyle='dashed', linewidth=2,
+            label=f'Median = {median_all:.2f}')
+plt.xlabel('Tip value')
+plt.ylabel('Frequency')
+plt.title('Whole dataset tip values')
+plt.grid(True)
+plt.legend()
+
+plt.subplot(1, 3, 2)
+plt.hist(smokers_df['tip'], bins=10, color='#ff7675')
+median_smokers = smokers_df['tip'].median()
+plt.axvline(median_smokers, color='black', linestyle='dashed', linewidth=2,
+            label=f'Median = {median_smokers:.2f}')
+plt.xlabel('Tip value')
+plt.ylabel('Frequency')
+plt.title('Smokers tip values')
+plt.grid(True)
+plt.legend()
+
+plt.subplot(1, 3, 3)
+plt.hist(non_smokers_df['tip'], bins=10, color='#55efc4')
+median_non_smokers = non_smokers_df['tip'].median()
+plt.axvline(median_non_smokers, color='black', linestyle='dashed', linewidth=2,
+            label=f'Median = {median_non_smokers:.2f}')
+plt.xlabel('Tip value')
+plt.ylabel('Frequency')
+plt.title('Non-smokers tip values')
+plt.grid(True)
+plt.legend()
+
+plt.tight_layout()
+plt.show()
+```
+<img width="791" alt="Ảnh màn hình 2025-05-20 lúc 21 51 04" src="https://github.com/user-attachments/assets/d06245de-596f-4f37-9f69-53e9f2412916" />

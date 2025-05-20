@@ -220,7 +220,9 @@ u_stat, p_value = mannwhitneyu(smokers_df['tip'], non_smokers_df['tip'], alterna
 print(f"Mann–Whitney U test: U = {u_stat:.2f}, p = {p_value:.4f}")
 ```
 Mann–Whitney U test: U = 7163.00, p = 0.3960
+
 Final Conclusion: p > 0.05, There is insufficient statistical evidence to conclude that smokers tip more than non-smokers.
+
 ## 👨👩 Do males give more tips?
 ### Separate Males and Females
 ``` python
@@ -307,3 +309,22 @@ plt.show()
 ```
 
 <img width="794" alt="Ảnh màn hình 2025-05-20 lúc 23 52 03" src="https://github.com/user-attachments/assets/ad54db72-a0ea-4447-adb2-25ae395bd5b3" />
+
+### Mann-Whitney U test 
+
+✅ Formulation of Hypotheses
+
+Null Hypothesis (H₀):
+The distribution of tip amounts for smokers is equal to or less than that of non-smokers.
+
+Alternative Hypothesis (H₁):
+The distribution of tip amounts for smokers is greater than that of non-smokers.
+``` python
+from scipy.stats import mannwhitneyu
+
+u_stat, p_value = mannwhitneyu(smokers_df['tip'], non_smokers_df['tip'], alternative='greater')
+print(f"Mann–Whitney U test: U = {u_stat:.2f}, p = {p_value:.4f}")
+```
+Mann–Whitney U test: U = 7163.00, p = 0.3960
+
+Final Conclusion: p > 0.05, There is insufficient statistical evidence to conclude that smokers tip more than non-smokers.

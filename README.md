@@ -87,3 +87,28 @@ Data columns (total 8 columns):
 dtypes: Float64(2), Int64(2), string(4)
 memory usage: 16.3 KB
 ```
+### Basic Descriptive Statistics
+
+``` python
+df.describe()
+```
+|       | id     | total_bill | tip     | size    |
+|-------|--------|------------|---------|---------|
+| count | 244.0  | 244.0      | 244.0   | 244.0   |
+| mean  | 121.5  | 19.785943  | 2.998279| 2.569672|
+| std   | 70.580923 | 8.902412 | 1.383638| 0.9511  |
+| min   | 0.0    | 3.07       | 1.0     | 1.0     |
+| 25%   | 60.75  | 13.3475    | 2.0     | 2.0     |
+| 50%   | 121.5  | 17.795     | 2.9     | 2.0     |
+| 75%   | 182.25 | 24.1275    | 3.5625  | 3.0     |
+| max   | 243.0  | 50.81      | 10.0    | 6.0     |
+
+➡️ Let's move forward!
+
+# 💸 Tip value influencers
+## 🚬 Do people who smoke give more tips?
+### Separate smokers and non-smokers
+``` python
+smokers_df = df[df['smoker'] == 'Yes']
+non_smokers_df = df.query('smoker == "No"')
+```

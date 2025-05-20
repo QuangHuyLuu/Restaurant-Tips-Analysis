@@ -201,3 +201,105 @@ plt.tight_layout()
 plt.show()
 ```
 <img width="791" alt="Ảnh màn hình 2025-05-20 lúc 21 51 04" src="https://github.com/user-attachments/assets/d06245de-596f-4f37-9f69-53e9f2412916" />
+**General conclusion:** Based on Histogram, Smokers will give more tips than Non-smokers
+### Mann-Whitney U test 
+✅ Formulation of Hypotheses
+Null Hypothesis (H₀):
+The distribution of tip amounts for smokers is equal to or less than that of non-smokers.
+
+Alternative Hypothesis (H₁):
+The distribution of tip amounts for smokers is greater than that of non-smokers.
+``` python
+from scipy.stats import mannwhitneyu
+
+u_stat, p_value = mannwhitneyu(smokers_df['tip'], non_smokers_df['tip'], alternative='greater')
+print(f"Mann–Whitney U test: U = {u_stat:.2f}, p = {p_value:.4f}")
+```
+Mann–Whitney U test: U = 7163.00, p = 0.3960
+Final Conclusion: p > 0.05, There is insufficient statistical evidence to conclude that smokers tip more than non-smokers.
+## 👨👩 Do males give more tips?
+### Separate Males and Females
+``` python
+males_df = df[df['sex'] == 'Male']
+females_df = df[df['sex'] == 'Female']
+```
+### Compare their measures of central tendency
+#### 👨 Male
+``` python
+males_tip_min = males_df['tip'].min()
+males_tip_max = males_df['tip'].max()
+males_tip_mean = males_df['tip'].mean()
+males_tip_median = males_df['tip'].median()
+```
+#### 👩 Female
+``` python
+females_tip_min = females_df['tip'].min()
+females_tip_max = females_df['tip'].max()
+females_tip_mean = females_df['tip'].mean()
+females_tip_median = females_df['tip'].median()
+```
+Let's show the retrieved results together
+``` python
+all_vals_dict1 = {
+    'Common': {'min': common_tip_min, 'max': common_tip_max, 'mean': common_tip_mean, 'median': common_tip_median},
+    'Males': {'min': males_tip_min, 'max': males_tip_max, 'mean': males_tip_mean, 'median': males_tip_median},
+    'Females': {'min': females_tip_min, 'max': females_tip_max, 'mean': females_tip_mean, 'median': females_tip_median}
+}
+
+all_mct1 = pd.DataFrame(all_vals_dict1)
+all_mct1
+```
+| **Statistic** | **Common** | **Males ♂️** | **Females ♀️** |
+|---------------|------------|--------------|----------------|
+| **min**       | 1.000000   | 1.000000     | 1.000000       |
+| **max**       | 10.000000  | 10.000000    | 6.500000       |
+| **mean**      | 2.998279   | 3.089618     | 2.833448       |
+| **median**    | 2.900000   | 3.000000     | 2.750000       |
+
+- Based on max Tips: Males give more tips than Females
+- Based on median: Males give more tips than Common and Females
+
+**General conclusion:** Males will give more tips than Common and Females
+
+### Look at histograms
+``` python
+plt.figure(figsize=(15, 5))
+
+plt.subplot(1, 3, 1)
+plt.hist(df['tip'], bins=10, color='#74b9ff')
+median_all = df['tip'].median()
+plt.axvline(median_all, color='black', linestyle='dashed', linewidth=2,
+            label=f'Median = {median_all:.2f}')
+plt.xlabel('Tip value')
+plt.ylabel('Frequency')
+plt.title('Whole dataset tip values')
+plt.grid(True)
+plt.legend()
+
+plt.subplot(1, 3, 2)
+plt.hist(males_df['tip'], bins=10, color='#ff7675')
+median_males = males_df['tip'].median()
+plt.axvline(median_males, color='black', linestyle='dashed', linewidth=2,
+            label=f'Median = {median_males:.2f}')
+plt.xlabel('Tip value')
+plt.ylabel('Frequency')
+plt.title('Males tip values')
+plt.grid(True)
+plt.legend()
+
+plt.subplot(1, 3, 3)
+plt.hist(females_df['tip'], bins=10, color='#55efc4')
+median_females = females_df['tip'].median()
+plt.axvline(median_females, color='black', linestyle='dashed', linewidth=2,
+            label=f'Median = {median_females:.2f}')
+plt.xlabel('Tip value')
+plt.ylabel('Frequency')
+plt.title('Females tip values')
+plt.grid(True)
+plt.legend()
+
+plt.tight_layout()
+plt.show()
+```
+
+<img width="794" alt="Ảnh màn hình 2025-05-20 lúc 23 52 03" src="https://github.com/user-attachments/assets/ad54db72-a0ea-4447-adb2-25ae395bd5b3" />

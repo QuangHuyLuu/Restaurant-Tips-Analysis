@@ -42,7 +42,8 @@ We can see information about:
 ### Column types checking
 ```python
 df.info()
-``` text
+```
+```text
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 244 entries, 0 to 243
 Data columns (total 8 columns):

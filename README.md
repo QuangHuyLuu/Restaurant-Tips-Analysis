@@ -112,3 +112,38 @@ df.describe()
 smokers_df = df[df['smoker'] == 'Yes']
 non_smokers_df = df.query('smoker == "No"')
 ```
+### Compare their measures of central tendency
+#### 🌏 Whole dataset
+Calculate them for the 'tip' column through the whole dataset and save them into the following variables:
+``` python
+common_tip_min =df['tip'].min()
+common_tip_max = df['tip'].max()
+common_tip_mean = df['tip'].mean()
+common_tip_median = df['tip'].median()
+```
+#### 🚬 Smokers
+``` python 
+smokers_tip_min = smokers_df['tip'].min()
+smokers_tip_max = smokers_df['tip'].max()
+smokers_tip_mean = smokers_df['tip'].mean()
+smokers_tip_median = smokers_df['tip'].median()
+```
+#### 🚭 Non-smokers
+``` python
+non_smokers_tip_min = non_smokers_df['tip'].min()
+non_smokers_tip_max = non_smokers_df['tip'].max()
+non_smokers_tip_mean = non_smokers_df['tip'].mean()
+non_smokers_tip_median = non_smokers_df['tip'].median()
+```
+
+Let's show the retrieved results together
+
+``` python
+all_vals_dict = {
+    'Common': {'min': common_tip_min, 'max': common_tip_max, 'mean': common_tip_mean, 'median': common_tip_median},
+    'Smokers': {'min': smokers_tip_min, 'max': smokers_tip_max, 'mean': smokers_tip_mean, 'median': smokers_tip_median},
+    'Non-smokers': {'min': non_smokers_tip_min, 'max': non_smokers_tip_max, 'mean': non_smokers_tip_mean, 'median': non_smokers_tip_median}
+}
+all_mct = pd.DataFrame(all_vals_dict)
+all_mct
+```

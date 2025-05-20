@@ -42,21 +42,23 @@ We can see information about:
 ### Column types checking
 ```python
 df.info()
+``` text
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 244 entries, 0 to 243
+Data columns (total 8 columns):
+ #   Column      Non-Null Count  Dtype  
+---  ------      --------------  -----  
+ 0   id          244 non-null    int64  
+ 1   total_bill  244 non-null    float64
+ 2   tip         244 non-null    float64
+ 3   sex         244 non-null    object 
+ 4   smoker      244 non-null    object 
+ 5   day         244 non-null    object 
+ 6   time        244 non-null    object 
+ 7   size        244 non-null    int64  
+dtypes: float64(2), int64(2), object(4)
+memory usage: 15.4+ KB
 ```
-- **Rows:** 244
-- **Columns:** 8
-- **Memory usage:** 16.3 KB
-
-| #  | Column      | Non-Null Count | Dtype    |
-|----|-------------|----------------|----------|
-| 0  | id          | 244 non-null   | Int64    |
-| 1  | total_bill  | 244 non-null   | Float64  |
-| 2  | tip         | 244 non-null   | Float64  |
-| 3  | sex         | 244 non-null   | string   |
-| 4  | smoker      | 244 non-null   | string   |
-| 5  | day         | 244 non-null   | string   |
-| 6  | time        | 244 non-null   | string   |
-| 7  | size        | 244 non-null   | Int64    |
 
 We have string columns considered as objects.
 

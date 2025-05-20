@@ -157,4 +157,5 @@ all_mct
 ##### Insights based on measures of central tendency comparison:
 - Based on max Tips: Smokers give more tips than Non_smokers
 - Based on median: Smokers give more tips than Common and Non_smokers
+  
 **General conclusion:** Smokers will give more tips than Common and Non_smokers

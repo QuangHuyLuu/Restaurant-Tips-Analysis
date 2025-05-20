@@ -201,9 +201,13 @@ plt.tight_layout()
 plt.show()
 ```
 <img width="791" alt="Ảnh màn hình 2025-05-20 lúc 21 51 04" src="https://github.com/user-attachments/assets/d06245de-596f-4f37-9f69-53e9f2412916" />
+
 **General conclusion:** Based on Histogram, Smokers will give more tips than Non-smokers
+
 ### Mann-Whitney U test 
+
 ✅ Formulation of Hypotheses
+
 Null Hypothesis (H₀):
 The distribution of tip amounts for smokers is equal to or less than that of non-smokers.
 

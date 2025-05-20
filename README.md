@@ -57,3 +57,30 @@ df.info()
 | 5  | day         | 244 non-null   | string   |
 | 6  | time        | 244 non-null   | string   |
 | 7  | size        | 244 non-null   | Int64    |
+
+We have string columns considered as objects.
+
+```python
+df=df.convert_dtypes()
+```
+Check again (output columns and their types):
+```python
+df.info()
+```
+```text
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 244 entries, 0 to 243
+Data columns (total 8 columns):
+ #   Column      Non-Null Count  Dtype  
+---  ------      --------------  -----  
+ 0   id          244 non-null    Int64  
+ 1   total_bill  244 non-null    Float64
+ 2   tip         244 non-null    Float64
+ 3   sex         244 non-null    string 
+ 4   smoker      244 non-null    string 
+ 5   day         244 non-null    string 
+ 6   time        244 non-null    string 
+ 7   size        244 non-null    Int64  
+dtypes: Float64(2), Int64(2), string(4)
+memory usage: 16.3 KB
+```

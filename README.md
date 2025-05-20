@@ -3,5 +3,5 @@ This project aims to use the restaurant tips dataset to practice creating compos
 The dataset consists of information from 244 restaurant bills, collected in the US in 1987.
 It includes details about the tips given to restaurant staff, such as the total bill, tip amount, gender of the person paying, smoking status, day of the week, time of day, and party size.
 ## 📥 Data import
-`import pandas as pd <br>
-import matplotlib.pyplot as plt`
+`import pandas as pd`
+`import matplotlib.pyplot as plt`

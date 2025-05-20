@@ -6,4 +6,5 @@ It includes details about the tips given to restaurant staff, such as the total 
 ```python
 import pandas as pd
 import matplotlib.pyplot as plt
+df = pd.read_csv('https://raw.githubusercontent.com/RusAbk/sca_datasets/main/tips.csv')
 ```

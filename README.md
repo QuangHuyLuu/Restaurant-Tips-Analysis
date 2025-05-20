@@ -21,18 +21,19 @@ df.head()
 | 2  | 21.01      | 3.50 | Male   | No     | Sun | Dinner | 3    |
 | 3  | 23.68      | 3.31 | Male   | No     | Sun | Dinner | 2    |
 | 4  | 24.59      | 3.61 | Female | No     | Sun | Dinner | 4    |
+
 As you can see each observation represents a customer who left a tip at a restaurant.
 
 We can see information about:
 
-the day it occurred
+- the day it occurred
 
-if it was at lunch or dinner
+- if it was at lunch or dinner
 
-the total bill
+- the total bill
 
-the sex of the person
+- the sex of the person
 
-if they were a smoker or not
+- if they were a smoker or not
 
-the size of the party
+- the size of the party

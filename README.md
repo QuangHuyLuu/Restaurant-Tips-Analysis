@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 df = pd.read_csv('https://raw.githubusercontent.com/RusAbk/sca_datasets/main/tips.csv')
 ```
 ## 🔍 Data exploration
+### Test sample
 ```python
 df.head()
 ```
@@ -37,3 +38,8 @@ We can see information about:
 - if they were a smoker or not
 
 - the size of the party
+
+### Column types checking
+```python
+df.info()
+```

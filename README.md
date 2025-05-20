@@ -147,3 +147,14 @@ all_vals_dict = {
 all_mct = pd.DataFrame(all_vals_dict)
 all_mct
 ```
+| Statistic | Common    | Smokers   | Non-smokers |
+|-----------|-----------|-----------|--------------|
+| min       | 1.000000  | 1.00000   | 1.000000     |
+| max       | 10.000000 | 10.00000  | 9.000000     |
+| mean      | 2.998279  | 3.00871   | 2.991854     |
+| median    | 2.900000  | 3.00000   | 2.740000     |
+
+##### Insights based on measures of central tendency comparison:
+- Based on max Tips: Smokers give more tips than Non_smokers
+- Based on median: Smokers give more tips than Common and Non_smokers
+**General conclusion:** Smokers will give more tips than Common and Non_smokers

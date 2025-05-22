@@ -477,3 +477,70 @@ all_mct3
 | Max       | 10.000000| 10.00000     | 6.700000        |
 | Mean      | 2.998279 | 3.10267      | 2.728088        |
 | Median    | 2.900000 | 3.00000      | 2.250000        |
+
+**Insights based on measures of central tendency comparison:**
+
+- Based on max Tips: Dinner give more tips than Non_Dinner
+- Based on median: Dinner give more tips than Common and Non_Dinner
+**General conclusion: Dinner will give more tips than Common and Non_Dinner**
+
+### Look at histograms
+``` python
+plt.subplot(1, 3, 1)
+plt.hist(df['tip'], bins=10, color='#74b9ff')
+median_all = df['tip'].median()
+plt.axvline(median_all, color='black', linestyle='dashed', linewidth=2,
+            label=f'Median = {median_all:.2f}')
+plt.xlabel('Tip value')
+plt.ylabel('Frequency')
+plt.title('Whole dataset tip values')
+plt.grid(True)
+plt.legend()
+
+
+plt.subplot(1, 3, 2)
+plt.hist(dinner_df['tip'], bins=10, color='#ff7675')
+median_dinner = dinner_df['tip'].median()
+plt.axvline(median_dinner, color='black', linestyle='dashed', linewidth=2,
+            label=f'Median = {median_dinner:.2f}')
+plt.xlabel('Tip value')
+plt.ylabel('Frequency')
+plt.title('Dinner tip values')
+plt.grid(True)
+plt.legend()
+
+plt.subplot(1, 3, 3)
+plt.hist(non_dinner_df['tip'], bins=10, color='#55efc4')
+median_non_dinner = non_dinner_df['tip'].median()
+plt.axvline(median_non_dinner, color='black', linestyle='dashed', linewidth=2,
+            label=f'Median = {median_non_dinner:.2f}')
+plt.xlabel('Tip value')
+plt.ylabel('Frequency')
+plt.title('Non-Dinner tip values')
+plt.grid(True)
+plt.legend()
+
+plt.tight_layout()
+plt.show()
+```
+<img width="788" alt="Ảnh màn hình 2025-05-22 lúc 10 46 10" src="https://github.com/user-attachments/assets/58531245-c6eb-4948-8ef6-e391057162c0" />
+
+Insight: Dinner give more tips than Non-Dinner based on Histogram
+
+### Mann-Whitney U test 
+
+✅ Formulation of Hypotheses
+
+Null Hypothesis (H₀):
+The distribution of tip amounts for Dinner is equal to or less than that of Non-Dinner.
+
+Alternative Hypothesis (H₁):
+The distribution of tip amounts for Dinner is greater than that of Non-Dinner.
+``` python
+u_stat, p_value = mannwhitneyu(dinner_df['tip'], non_dinner_df['tip'], alternative='greater')
+print(f"Mann–Whitney U test: U = {u_stat:.2f}, p = {p_value:.4f}")
+```
+Mann–Whitney U test: U = 7063.00, p = 0.0144
+
+Final Conclusion: p-value < 0.05, We conclude that Dinner will receive more tips than Non-Dinner
+

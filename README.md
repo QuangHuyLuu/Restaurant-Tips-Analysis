@@ -5,8 +5,6 @@ The dataset consists of information from 244 restaurant bills, collected in the 
 
 It includes details about the tips given to restaurant staff, such as the total bill, tip amount, gender of the person paying, smoking status, day of the week, time of day, and party size.
 
-![Uploading Ảnh màn hình 2025-05-22 lúc 10.13.35.png…]()
-
 ## 📥 Data import
 ```python
 import pandas as pd
@@ -318,16 +316,164 @@ plt.show()
 ✅ Formulation of Hypotheses
 
 Null Hypothesis (H₀):
-The distribution of tip amounts for smokers is equal to or less than that of non-smokers.
+The distribution of tip amounts for Male is equal to or less than that of Females.
 
 Alternative Hypothesis (H₁):
-The distribution of tip amounts for smokers is greater than that of non-smokers.
+The distribution of tip amounts for Male is greater than that of Females.
 ``` python
-from scipy.stats import mannwhitneyu
-
-u_stat, p_value = mannwhitneyu(smokers_df['tip'], non_smokers_df['tip'], alternative='greater')
+u_stat, p_value = mannwhitneyu(males_df['tip'], females_df['tip'], alternative='greater')
 print(f"Mann–Whitney U test: U = {u_stat:.2f}, p = {p_value:.4f}")
 ```
-Mann–Whitney U test: U = 7163.00, p = 0.3960
+Mann–Whitney U test: U = 7289.50, p = 0.1917
 
-Final Conclusion: p > 0.05, There is insufficient statistical evidence to conclude that smokers tip more than non-smokers.
+Final Conclusion: p > 0.05, There is insufficient statistical evidence to conclude that males tip more than females.
+
+## 📆 Do weekends bring more tips?
+
+### Separate Weekend and Non-Weekend
+```python
+weekends_df = df.query('day == "Sat" or day == "Sun"')
+non_weekend_df = df.query('day != "Sat" and day != "Sun"')
+```
+### Compare their measures of central tendency
+#### 📅 Weekend
+``` python
+weekends_tip_min = weekends_df['tip'].min()
+weekends_tip_max = weekends_df['tip'].max()
+weekends_tip_mean = weekends_df['tip'].mean()
+weekends_tip_median = weekends_df['tip'].median()
+```
+#### 💼 Non-weekend
+
+``` python
+non_weekends_tip_min = non_weekend_df['tip'].min()
+non_weekends_tip_max = non_weekend_df['tip'].max()
+non_weekends_tip_mean = non_weekend_df['tip'].mean()
+non_weekends_tip_median = non_weekend_df['tip'].median()
+```
+Let's show the retrieved results together
+``` python
+all_vals_dict2 = {
+    'Common': {'min': common_tip_min, 'max': common_tip_max, 'mean': common_tip_mean, 'median': common_tip_median},
+    'Weekends': {'min': weekends_tip_min, 'max': weekends_tip_max, 'mean': weekends_tip_mean, 'median': weekends_tip_median},
+    'Non-Weekends': {'min': non_weekends_tip_min, 'max': non_weekends_tip_max, 'mean': non_weekends_tip_mean, 'median': non_weekends_tip_median}
+}
+
+all_mct2 = pd.DataFrame(all_vals_dict2)
+all_mct2
+```
+| Statistic | Common   | Weekends  | Non-Weekends |
+|-----------|----------|-----------|---------------|
+| Min       | 1.000000 | 1.000000  | 1.00000       |
+| Max       | 10.000000| 10.000000 | 6.70000       |
+| Mean      | 2.998279 | 3.115276  | 2.76284       |
+| Median    | 2.900000 | 3.000000  | 2.50000       |
+
+**Insights based on measures of central tendency comparison:**
+
+- Based on max Tips: Weekends give more tips than Non_Weekends
+- Based on median: Weekends give more tips than Common and Non_Weekends
+**General conclusion: Weekends will give more tips than Common and Non_Weekends**
+
+### Look at histograms
+``` python
+plt.figure(figsize=(15, 5))
+
+plt.subplot(1, 3, 1)
+plt.hist(df['tip'], bins=10, color='#74b9ff')
+median_all = df['tip'].median()
+plt.axvline(median_all, color='black', linestyle='dashed', linewidth=2,
+            label=f'Median = {median_all:.2f}')
+plt.xlabel('Tip value')
+plt.ylabel('Frequency')
+plt.title('Whole dataset tip values')
+plt.grid(True)
+plt.legend()
+
+plt.subplot(1, 3, 2)
+plt.hist(weekends_df['tip'], bins=10, color='#ff7675')
+median_weekends = weekends_df['tip'].median()
+plt.axvline(median_weekends, color='black', linestyle='dashed', linewidth=2,
+            label=f'Median = {median_weekends:.2f}')
+plt.xlabel('Tip value')
+plt.ylabel('Frequency')
+plt.title('Weekends tip values')
+plt.grid(True)
+plt.legend()
+
+plt.subplot(1, 3, 3)
+plt.hist(non_weekend_df['tip'], bins=10, color='#55efc4')
+median_non_weekends = non_weekend_df['tip'].median()
+plt.axvline(median_non_weekends, color='black', linestyle='dashed', linewidth=2,
+            label=f'Median = {median_non_weekends:.2f}')
+plt.xlabel('Tip value')
+plt.ylabel('Frequency')
+plt.title('Non-Weekends tip values')
+plt.grid(True)
+plt.legend()
+
+plt.tight_layout()
+plt.show()
+```
+
+<img width="790" alt="Ảnh màn hình 2025-05-22 lúc 10 28 31" src="https://github.com/user-attachments/assets/a3831424-f3f1-45f8-b491-63645f19bc65" />
+
+Insight: Weekends give more tips than Non-Weekends based on Histogram
+
+### Mann-Whitney U test 
+
+✅ Formulation of Hypotheses
+
+Null Hypothesis (H₀):
+The distribution of tip amounts for Weekend is equal to or less than that of Non-Weekend.
+
+Alternative Hypothesis (H₁):
+The distribution of tip amounts for Weekend is greater than that of Non-Weekend.
+``` python
+u_stat, p_value = mannwhitneyu(weekends_df['tip'], non_weekend_df['tip'], alternative='greater')
+print(f"Mann–Whitney U test: U = {u_stat:.2f}, p = {p_value:.4f}")
+```
+Mann–Whitney U test: U = 7619.50, p = 0.0248
+
+Final Conclusion: p-value < 0.05, We conclude that Weekday receive more tips than Non-Weekends
+
+## 🕑 Do dinners bring more tips?
+
+### Separate Dinner and Non-Dinner
+```python
+dinner_df = df.query('time == "Dinner"')
+non_dinner_df = df.query('time != "Dinner"')
+```
+### Compare their measures of central tendency
+#### 🍽️ Dinner
+``` python
+dinner_tip_min = dinner_df['tip'].min()
+dinner_tip_max = dinner_df['tip'].max()
+dinner_tip_mean = dinner_df['tip'].mean()
+dinner_tip_median = dinner_df['tip'].median()
+```
+#### 🥪 Non-Dinner 
+```python
+non_dinner_tip_min = non_dinner_df['tip'].min()
+non_dinner_tip_max = non_dinner_df['tip'].max()
+non_dinner_tip_mean = non_dinner_df['tip'].mean()
+non_dinner_tip_median = non_dinner_df['tip'].median()
+```
+Let's show the retrieved results together
+```python
+all_vals_dict3 = {
+    'Common': {'min': common_tip_min, 'max': common_tip_max, 'mean': common_tip_mean, 'median': common_tip_median},
+    'Dinner': {'min': dinner_tip_min, 'max': dinner_tip_max, 'mean': dinner_tip_mean, 'median': dinner_tip_median},
+    'Non-Dinner': {'min': non_dinner_tip_min, 'max': non_dinner_tip_max, 'mean': non_dinner_tip_mean, 'median': non_dinner_tip_median}
+}
+
+all_mct3 = pd.DataFrame(all_vals_dict3)
+all_mct3
+```
+
+| Statistic | Common   | Dinner | Non-Dinner |
+|-----------|----------|--------------|-----------------|
+| Min       | 1.000000 | 1.00000      | 1.250000        |
+| Max       | 10.000000| 10.00000     | 6.700000        |
+| Mean      | 2.998279 | 3.10267      | 2.728088        |
+| Median    | 2.900000 | 3.00000      | 2.250000        |

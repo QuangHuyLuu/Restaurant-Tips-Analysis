@@ -544,3 +544,7 @@ Mann–Whitney U test: U = 7063.00, p = 0.0144
 
 Final Conclusion: p-value < 0.05, We conclude that Dinner will receive more tips than Non-Dinner
 
+## **Summarize**
+**- Both Dinner and Weekends are significantly associated with higher tip amounts, supported by higher means, medians, and significant p-values from Mann–Whitney U tests**
+**- Although Males and Smokers appear to tip more than females and Non-smokers based on mean, median, and max values, the p - value > 0.05 shows that there is no statistical evidence to confirm that**
+

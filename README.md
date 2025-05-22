@@ -203,7 +203,7 @@ plt.show()
 ```
 <img width="791" alt="Ảnh màn hình 2025-05-20 lúc 21 51 04" src="https://github.com/user-attachments/assets/d06245de-596f-4f37-9f69-53e9f2412916" />
 
-**General conclusion:** Based on Histogram, Smokers will give more tips than Non-smokers
+**Insight:** Based on Histogram, Smokers will give more tips than Non-smokers
 
 ### Mann-Whitney U test 
 
@@ -222,7 +222,7 @@ print(f"Mann–Whitney U test: U = {u_stat:.2f}, p = {p_value:.4f}")
 ```
 Mann–Whitney U test: U = 7163.00, p = 0.3960
 
-Final Conclusion: p > 0.05, There is insufficient statistical evidence to conclude that smokers tip more than non-smokers.
+**Final Conclusion:** p > 0.05, There is insufficient statistical evidence to conclude that smokers tip more than non-smokers.
 
 ## 👨👩 Do males give more tips?
 ### Separate Males and Females
@@ -311,6 +311,8 @@ plt.show()
 
 <img width="794" alt="Ảnh màn hình 2025-05-20 lúc 23 52 03" src="https://github.com/user-attachments/assets/ad54db72-a0ea-4447-adb2-25ae395bd5b3" />
 
+**Insight:** Based on Histogram, Smokers will give more tips than Non-smokers
+
 ### Mann-Whitney U test 
 
 ✅ Formulation of Hypotheses
@@ -326,7 +328,7 @@ print(f"Mann–Whitney U test: U = {u_stat:.2f}, p = {p_value:.4f}")
 ```
 Mann–Whitney U test: U = 7289.50, p = 0.1917
 
-Final Conclusion: p > 0.05, There is insufficient statistical evidence to conclude that males tip more than females.
+**Final Conclusion:** p > 0.05, There is insufficient statistical evidence to conclude that males tip more than females.
 
 ## 📆 Do weekends bring more tips?
 
@@ -418,7 +420,7 @@ plt.show()
 
 <img width="790" alt="Ảnh màn hình 2025-05-22 lúc 10 28 31" src="https://github.com/user-attachments/assets/a3831424-f3f1-45f8-b491-63645f19bc65" />
 
-Insight: Weekends give more tips than Non-Weekends based on Histogram
+**Insight:** Weekends give more tips than Non-Weekends based on Histogram
 
 ### Mann-Whitney U test 
 
@@ -435,7 +437,7 @@ print(f"Mann–Whitney U test: U = {u_stat:.2f}, p = {p_value:.4f}")
 ```
 Mann–Whitney U test: U = 7619.50, p = 0.0248
 
-Final Conclusion: p-value < 0.05, We conclude that Weekday receive more tips than Non-Weekends
+**Final Conclusion:** p-value < 0.05, We conclude that Weekday receive more tips than Non-Weekends
 
 ## 🕑 Do dinners bring more tips?
 
@@ -525,7 +527,7 @@ plt.show()
 ```
 <img width="788" alt="Ảnh màn hình 2025-05-22 lúc 10 46 10" src="https://github.com/user-attachments/assets/58531245-c6eb-4948-8ef6-e391057162c0" />
 
-Insight: Dinner give more tips than Non-Dinner based on Histogram
+**Insight:** Dinner give more tips than Non-Dinner based on Histogram
 
 ### Mann-Whitney U test 
 
@@ -542,7 +544,7 @@ print(f"Mann–Whitney U test: U = {u_stat:.2f}, p = {p_value:.4f}")
 ```
 Mann–Whitney U test: U = 7063.00, p = 0.0144
 
-Final Conclusion: p-value < 0.05, We conclude that Dinner will receive more tips than Non-Dinner
+**Final Conclusion:** p-value < 0.05, We conclude that Dinner will receive more tips than Non-Dinner
 
 ## **Summarize**
 **- Both Dinner and Weekends are significantly associated with higher tip amounts, supported by higher means, medians, and significant p-values from Mann–Whitney U tests**
